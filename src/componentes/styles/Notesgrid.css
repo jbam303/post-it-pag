@@ -1,0 +1,14 @@
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+  }
+  
+  @media (max-width: 768px) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
