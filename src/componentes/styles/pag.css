@@ -1,0 +1,75 @@
+.app {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.note-form {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+  
+}
+  
+  .note-form input,
+  .note-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  
+}
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+  
+}
+  
+  @media (max-width: 768px) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+  
+}
+  
+
+
+
+
+/* Estilo para pantallas grandes */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 15px;
+  }
+  
+  .note {
+    background-color: #ffd700;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  /* Para pantallas medianas (tablets) */
+  @media (max-width: 768px) {
+    .notes-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    }
+  }
+  
+  /* Para pantallas pequeñas (teléfonos) */
+  @media (max-width: 480px) {
+    .notes-grid {
+      grid-template-columns: 1fr; /* 1 columna */
+    }
+  
+    .note {
+      font-size: 14px; /* Reduce el tamaño de fuente */
+    }
+  }
+  

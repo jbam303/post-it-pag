@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles/NoteForm.css';
+import './styles/pag.css';
 
 const NoteForm = ({ onAddNote }) => {
   const [title, setTitle] = useState('');
@@ -17,22 +17,33 @@ const NoteForm = ({ onAddNote }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="note-form">
-      <input
-        type="text"
-        placeholder="Título "
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <textarea
-        placeholder="Descripción (obligatoria)"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      ></textarea>
-      <button type="submit" className="btn btn-primary">Agregar Nota</button>
+    <form className="note-form container mt-3" onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label htmlFor="title" className="form-label">Título</label>
+        <input
+          id="title"
+          className="form-control"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Título opcional"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="description" className="form-label">Descripción</label>
+        <textarea
+          id="description"
+          className="form-control"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Descripción (obligatoria)"
+          required
+        />
+      </div>
+      <button className="btn btn-primary" type="submit">Agregar Nota</button>
     </form>
   );
 };
+
 
 export default NoteForm;

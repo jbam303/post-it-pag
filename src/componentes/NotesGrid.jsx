@@ -1,13 +1,16 @@
 import React from 'react';
 import Note from './Note';
-import './styles/Notesgrid.css';
 
 const NotesGrid = ({ notes }) => {
   return (
-    <div className="notes-grid">
-      {notes.map((note, index) => (
-        <Note key={index} title={note.title} description={note.description} />
-      ))}
+    <div className="container mt-4">
+      <div className="row">
+        {notes.map((note, index) => (
+          <div className="col-12 col-md-6 col-lg-3 mb-3" key={index}>
+            <Note title={note.title} description={note.description} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
