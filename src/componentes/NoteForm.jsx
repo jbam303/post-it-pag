@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import './styles/pag.css';
+import './styles/NoteForm.css';
 
-const NoteForm = ({ onAddNote }) => {
+const NotaForm = ({ onAddNote}) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [color, setColor] = useState('#ffd700');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,39 +12,42 @@ const NoteForm = ({ onAddNote }) => {
       alert('La descripción es obligatoria.');
       return;
     }
-    onAddNote({ title, description });
+
+    onAddNote({ title, description, color });
     setTitle('');
     setDescription('');
+    setColor('#ffd700');
   };
 
   return (
-    <form className="note-form container mt-3" onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="title" className="form-label">Título</label>
+    <form onSubmit={handleSubmit} className="nota-form">
+      <input
+        type="text"
+        placeholder="Título"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="nota-input"
+      />
+      <textarea
+        placeholder="Descripción (obligatoria)"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
+        className="nota-textarea"
+      ></textarea>
+      <label>
+        Color de Nota:
         <input
-          id="title"
-          className="form-control"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Título opcional"
+          type="color"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          className="nota-color-picker"
         />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="description" className="form-label">Descripción</label>
-        <textarea
-          id="description"
-          className="form-control"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Descripción (obligatoria)"
-          required
-        />
-      </div>
-      <button className="btn btn-primary" type="submit">Agregar Nota</button>
+      </label>
+      <button type="submit" className="btn btn-primary">Agregar Nota</button>
     </form>
   );
 };
 
+export default NotaForm;
 
-export default NoteForm;

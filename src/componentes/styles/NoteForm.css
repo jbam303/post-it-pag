@@ -1,4 +1,4 @@
-.note-form {
+.nota-form {
     margin: 20px auto;
     display: flex;
     flex-direction: column;
@@ -6,10 +6,19 @@
     max-width: 400px;
   }
   
-  .note-form input,
-  .note-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.nota-form input,
+.nota-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
   
+.nota-color-picker {
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  width: 40px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}

@@ -1,32 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NoteForm from './NoteForm';
 import NotesGrid from './NotesGrid';
-import './styles/pag.css';
+import './styles/App.css';
 
 const App = () => {
   const [notas, setNotas] = useState([]);
+
+  useEffect(() => {
+    const savedNotas = JSON.parse(localStorage.getItem('notas')) || [];
+    setNotas(savedNotas);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notas', JSON.stringify(notas));
+  }, [notas]);
 
   const addNota = (nota) => {
     setNotas([...notas, nota]);
   };
 
+  const deleteNota = (indexToRemove) => {
+    const updatedNotas = notas.filter((_, index) => index !== indexToRemove);
+    setNotas(updatedNotas);
+  };
+
   return (
     <div className="app">
       <header>
-        <h1>Post it</h1>
+        <h1>Post-it Notas</h1>
       </header>
       <main>
         <NoteForm onAddNote={addNota} />
-        <NotesGrid notes={notas} />
+        <NotesGrid notas={notas} deleteNota={deleteNota} />
       </main>
     </div>
   );
 };
-
-document.querySelectorAll('.Note').forEach(nota => {
-  const colores = ['#ffd700', '#87CEFA', '#98FB98', '#FFB6C1'];
-  const randomColor = colores[Math.floor(Math.random() * colores.length)];
-  nota.style.background = randomColor;
-});
 
 export default App;

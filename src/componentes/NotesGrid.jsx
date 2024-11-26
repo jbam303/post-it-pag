@@ -1,13 +1,19 @@
 import React from 'react';
 import Note from './Note';
+import './styles/Notesgrid.css';
 
-const NotesGrid = ({ notes }) => {
+const NotesGrid = ({ notas, deleteNota }) => {
   return (
-    <div className="container mt-4">
+    <div className="container">
       <div className="row">
-        {notes.map((note, index) => (
+        {notas.map((nota, index) => (
           <div className="col-12 col-md-6 col-lg-3 mb-3" key={index}>
-            <Note title={note.title} description={note.description} />
+            <Note
+              title={nota.title}
+              description={nota.description}
+              color={nota.color}
+              onDelete={() => deleteNota(index)}
+            />
           </div>
         ))}
       </div>
@@ -16,3 +22,4 @@ const NotesGrid = ({ notes }) => {
 };
 
 export default NotesGrid;
+
